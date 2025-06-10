@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hosting Gambar Exfams</title>
+  <meta charset="UTF-8" />
+  <title>Hosting Gambar EXFAMS</title>
   <style>
     body {
       background-color: #1d1c1c;
@@ -24,8 +24,8 @@
     }
 
     table {
-      width: 90%;
-      max-width: 1000px;
+      width: 80%;
+      max-width: 800px;
       border-collapse: collapse;
       background-color: #1e1e1e;
     }
@@ -44,11 +44,6 @@
 
     td:nth-child(2) {
       background-color: #332a2d;
-      color: #fff;
-    }
-
-    td:nth-child(3) {
-      background-color: #2d2d2d;
     }
 
     img {
@@ -62,26 +57,13 @@
       transform: scale(1.1);
     }
 
-    button.copy-btn {
-      padding: 5px 10px;
-      margin-left: 10px;
-      background-color: #ff5e7e;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button.copy-btn:hover {
-      background-color: #e94d6c;
-    }
-
     #fullscreen-img {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.95);
+      background-color: rgba(0, 0, 0, 0.95);
       display: none;
       justify-content: center;
       align-items: center;
@@ -97,64 +79,50 @@
     #fullscreen-img:active {
       display: none;
     }
+
+    .copy-btn {
+      background-color: #ffb3c1;
+      color: #000;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <h1>HOSTING GAMBAR<br>EXFAMS WEBSITE</h1>
+  <h1>HOSTING GAMBAR<br />EXFAMS WEBSITE</h1>
 
   <div id="fullscreen-img" onclick="this.style.display='none'">
-    <img src="" alt="fullscreen">
+    <img src="" alt="fullscreen" />
   </div>
 
-  <table>
+  <table id="gambar-table">
     <thead>
       <tr>
         <th>Gambar</th>
         <th>Nama File</th>
-        <th>Link Gambar</th>
+        <th>Copy URL</th>
       </tr>
     </thead>
-    <tbody id="table-body">
-      <!-- Data akan dimuat dari JS -->
-    </tbody>
+    <tbody></tbody>
   </table>
 
-  <script src="daftar-gambar.js"></script>
   <script>
-    const baseURL = "https://exfams.github.io/imgtesss/";
-    const tbody = document.getElementById("table-body");
-
-    files.forEach(filename => {
-      const nameOnly = filename.split(".")[0].toUpperCase();
-      const link = baseURL + filename;
-
-      const tr = document.createElement("tr");
-      tr.innerHTML = \`
-        <td><img src="\${link}" alt="\${nameOnly}" onclick="showFullscreen('\${link}')"></td>
-        <td>\${nameOnly}</td>
-        <td>
-          <input type="text" value="\${link}" id="input-\${nameOnly}" readonly style="width:70%;">
-          <button class="copy-btn" onclick="copyLink('\${nameOnly}')">Copy</button>
-        </td>
-      \`;
-      tbody.appendChild(tr);
-    });
-
     function showFullscreen(src) {
       const fullscreen = document.getElementById('fullscreen-img');
       fullscreen.style.display = 'flex';
       fullscreen.querySelector('img').src = src;
     }
 
-    function copyLink(id) {
-      const input = document.getElementById("input-" + id);
-      input.select();
-      input.setSelectionRange(0, 99999);
-      navigator.clipboard.writeText(input.value).then(() => {
-        alert("Link disalin: " + input.value);
+    function copyLink(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Link berhasil disalin:\n' + url);
       });
     }
   </script>
+  <script src="daftar-gambar.js"></script>
 </body>
 </html>
