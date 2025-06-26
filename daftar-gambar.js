@@ -4,7 +4,8 @@ const files = [
   "3.webp",
   "4.webp",
   "5.webp",
-  "6.jpeg"
+  "6.jpeg",
+  "7.jpeg"
 ];
 
 const baseURL = "https://exfams.github.io/imgtesss/";
