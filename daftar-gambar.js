@@ -6,6 +6,7 @@ const files = [
   "5.webp",
   "6.jpeg",
   "7.png",
+  "qr.webp",
   "9.png"
 ];
 
